@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,3 +16,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+//Nuestras rutas
+
+Route::get('/admin/saludo', [PruebaController::class, "index"]); //usuarios autenticados pueden ingresar 
