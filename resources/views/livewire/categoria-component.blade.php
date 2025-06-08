@@ -1,3 +1,5 @@
+@section("titulo", "Gestion Categorias")
+
 <div class="row">
     <div class="col-md-7">
         <div class="card">
@@ -22,7 +24,7 @@
                                 <td>{{ $cat->nombre }}</td>
                                 <td>{{ $cat->detalle }}</td>
                                 <td>
-                                    <button class="btn btn-warning" wire:click="editarCategoria({{$cat}})"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-warning" wire:click="editarCategoria({{$cat->id}})"><i class="fa fa-edit"></i></button>
                                 </td>
                             </tr>
                             
@@ -48,7 +50,7 @@
                     @error('detalle') <span class="alert alert-danger">{{ $message }}</span> @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-info btn-block">Guardar Categoria</button>
+                    <button type="submit" class="btn btn-info btn-block">{{($id_cat != null)?'Modificar Categoria':'Guardar Categoria'}}</button>
                     <button type="reset" class="btn btn-primary">Reset</button>
 
                 </form>

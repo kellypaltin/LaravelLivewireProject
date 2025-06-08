@@ -4,6 +4,7 @@ use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CategoriaComponent;
 use App\Livewire\CategoriaComponent as LivewireCategoriaComponent;
+use App\Livewire\Admin\Producto\ProductoComponent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,4 +36,7 @@ Route::prefix('admin')->middleware("auth")->group(function(){
     });
 
     Route::get('/categoria', LivewireCategoriaComponent::class);
+    Route::get('/producto', ProductoComponent::class);
+
+
 });
