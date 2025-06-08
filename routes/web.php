@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\CategoriaComponent;
+use App\Livewire\CategoriaComponent as LivewireCategoriaComponent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,14 +20,19 @@ Route::middleware([
 });
 
 
-//Nuestras rutas
+Route::prefix('admin')->middleware("auth")->group(function(){
 
-Route::get('/admin/saludo', [PruebaController::class, "index"]); //usuarios autenticados pueden ingresar 
+    //Nuestras rutas
 
-Route::get('/admin', function(){
-    return view('admin.index');
-});
+    Route::get('/saludo', [PruebaController::class, "index"]); //usuarios autenticados pueden ingresar 
 
-Route::get('/admin/usuario', function(){
-    return view('admin.usuario.index');
+    Route::get('/', function(){
+        return view('admin.index');
+    });
+
+    Route::get('/usuario', function(){
+        return view('admin.usuario.index');
+    });
+
+    Route::get('/categoria', LivewireCategoriaComponent::class);
 });
